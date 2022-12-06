@@ -17,3 +17,5 @@ require (
 	golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
 )
+
+replace github.com/subtle-byte/mockigo => github.com/iesen/mockigo v0.0.0-20221206220515-63425c524383
