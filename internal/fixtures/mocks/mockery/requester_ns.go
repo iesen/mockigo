@@ -3,8 +3,8 @@
 package mockery
 
 import http "net/http"
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -22,7 +22,7 @@ type _RequesterNS_Expecter struct {
 }
 
 func (_mock *RequesterNS) EXPECT() _RequesterNS_Expecter {
-	 return _RequesterNS_Expecter{mock: _mock.mock}
+	return _RequesterNS_Expecter{mock: _mock.mock}
 }
 
 type _RequesterNS_Get_Call struct {

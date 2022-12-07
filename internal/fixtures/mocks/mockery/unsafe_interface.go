@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 import unsafe "unsafe"
 
 var _ = match.Any[int]
@@ -22,14 +22,14 @@ type _UnsafeInterface_Expecter struct {
 }
 
 func (_mock *UnsafeInterface) EXPECT() _UnsafeInterface_Expecter {
-	 return _UnsafeInterface_Expecter{mock: _mock.mock}
+	return _UnsafeInterface_Expecter{mock: _mock.mock}
 }
 
 type _UnsafeInterface_Do_Call struct {
 	*mock.Call
 }
 
-func (_mock *UnsafeInterface) Do(ptr *unsafe.Pointer) () {
+func (_mock *UnsafeInterface) Do(ptr *unsafe.Pointer) {
 	_mock.mock.T.Helper()
 	_mock.mock.Called("Do", ptr)
 }
@@ -43,7 +43,7 @@ func (_call _UnsafeInterface_Do_Call) Return() _UnsafeInterface_Do_Call {
 	return _call
 }
 
-func (_call _UnsafeInterface_Do_Call) RunReturn(f func(ptr *unsafe.Pointer) ()) _UnsafeInterface_Do_Call {
+func (_call _UnsafeInterface_Do_Call) RunReturn(f func(ptr *unsafe.Pointer)) _UnsafeInterface_Do_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

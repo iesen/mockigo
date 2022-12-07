@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/subtle-byte/mockigo/internal/dir_walker/glob"
-	"github.com/subtle-byte/mockigo/internal/generator"
+	"github.com/iesen/mockigo/internal/dir_walker/glob"
+	"github.com/iesen/mockigo/internal/generator"
 	"golang.org/x/exp/maps"
 )
 

@@ -2,9 +2,9 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
-import mockery_http "github.com/subtle-byte/mockigo/internal/fixtures/mockery/http"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
+import mockery_http "github.com/iesen/mockigo/internal/fixtures/mockery/http"
 import net_http "net/http"
 
 var _ = match.Any[int]
@@ -23,7 +23,7 @@ type _HasConflictingNestedImports_Expecter struct {
 }
 
 func (_mock *HasConflictingNestedImports) EXPECT() _HasConflictingNestedImports_Expecter {
-	 return _HasConflictingNestedImports_Expecter{mock: _mock.mock}
+	return _HasConflictingNestedImports_Expecter{mock: _mock.mock}
 }
 
 type _HasConflictingNestedImports_Get_Call struct {
@@ -56,15 +56,15 @@ type _HasConflictingNestedImports_Z_Call struct {
 	*mock.Call
 }
 
-func (_mock *HasConflictingNestedImports) Z() (mockery_http.MyStruct) {
+func (_mock *HasConflictingNestedImports) Z() mockery_http.MyStruct {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("Z", )
+	_results := _mock.mock.Called("Z")
 	_r0 := _results.Get(0).(mockery_http.MyStruct)
 	return _r0
 }
 
 func (_expecter _HasConflictingNestedImports_Expecter) Z() _HasConflictingNestedImports_Z_Call {
-	return _HasConflictingNestedImports_Z_Call{Call: _expecter.mock.ExpectCall("Z", )}
+	return _HasConflictingNestedImports_Z_Call{Call: _expecter.mock.ExpectCall("Z")}
 }
 
 func (_call _HasConflictingNestedImports_Z_Call) Return(_r0 mockery_http.MyStruct) _HasConflictingNestedImports_Z_Call {
@@ -72,7 +72,7 @@ func (_call _HasConflictingNestedImports_Z_Call) Return(_r0 mockery_http.MyStruc
 	return _call
 }
 
-func (_call _HasConflictingNestedImports_Z_Call) RunReturn(f func() (mockery_http.MyStruct)) _HasConflictingNestedImports_Z_Call {
+func (_call _HasConflictingNestedImports_Z_Call) RunReturn(f func() mockery_http.MyStruct) _HasConflictingNestedImports_Z_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

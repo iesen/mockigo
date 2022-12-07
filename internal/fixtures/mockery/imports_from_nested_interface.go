@@ -1,7 +1,7 @@
 package mockery
 
 import (
-	"github.com/subtle-byte/mockigo/internal/fixtures/mockery/http"
+	"github.com/iesen/mockigo/internal/fixtures/mockery/http"
 )
 
 type HasConflictingNestedImports interface {

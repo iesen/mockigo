@@ -6,9 +6,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/subtle-byte/mockigo/internal/dir_walker/glob"
-	"github.com/subtle-byte/mockigo/internal/generator"
-	"github.com/subtle-byte/mockigo/internal/util"
+	"github.com/iesen/mockigo/internal/dir_walker/glob"
+	"github.com/iesen/mockigo/internal/generator"
+	"github.com/iesen/mockigo/internal/util"
 )
 
 type DirEntry struct {
@@ -45,7 +45,8 @@ func NewWalker() *Walker {
 	}
 }
 
-func (w *Walker) Walk(dirPath, forbiddenDirPath string, globDir *glob.Dir, visitor func(dirPath string, interfaces generator.Interfaces)) {
+func (w *Walker) Walk(dirPath, forbiddenDirPath string, globDir *glob.Dir,
+	visitor func(dirPath string, interfaces generator.Interfaces)) {
 	if dirPath == forbiddenDirPath {
 		return
 	}

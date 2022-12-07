@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,7 +21,7 @@ type _ExpecterTest_Expecter struct {
 }
 
 func (_mock *ExpecterTest) EXPECT() _ExpecterTest_Expecter {
-	 return _ExpecterTest_Expecter{mock: _mock.mock}
+	return _ExpecterTest_Expecter{mock: _mock.mock}
 }
 
 type _ExpecterTest_ManyArgsReturns_Call struct {
@@ -57,15 +57,15 @@ type _ExpecterTest_NoArg_Call struct {
 	*mock.Call
 }
 
-func (_mock *ExpecterTest) NoArg() (string) {
+func (_mock *ExpecterTest) NoArg() string {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("NoArg", )
+	_results := _mock.mock.Called("NoArg")
 	_r0 := _results.Get(0).(string)
 	return _r0
 }
 
 func (_expecter _ExpecterTest_Expecter) NoArg() _ExpecterTest_NoArg_Call {
-	return _ExpecterTest_NoArg_Call{Call: _expecter.mock.ExpectCall("NoArg", )}
+	return _ExpecterTest_NoArg_Call{Call: _expecter.mock.ExpectCall("NoArg")}
 }
 
 func (_call _ExpecterTest_NoArg_Call) Return(_r0 string) _ExpecterTest_NoArg_Call {
@@ -73,7 +73,7 @@ func (_call _ExpecterTest_NoArg_Call) Return(_r0 string) _ExpecterTest_NoArg_Cal
 	return _call
 }
 
-func (_call _ExpecterTest_NoArg_Call) RunReturn(f func() (string)) _ExpecterTest_NoArg_Call {
+func (_call _ExpecterTest_NoArg_Call) RunReturn(f func() string) _ExpecterTest_NoArg_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -82,7 +82,7 @@ type _ExpecterTest_NoReturn_Call struct {
 	*mock.Call
 }
 
-func (_mock *ExpecterTest) NoReturn(str string) () {
+func (_mock *ExpecterTest) NoReturn(str string) {
 	_mock.mock.T.Helper()
 	_mock.mock.Called("NoReturn", str)
 }
@@ -96,7 +96,7 @@ func (_call _ExpecterTest_NoReturn_Call) Return() _ExpecterTest_NoReturn_Call {
 	return _call
 }
 
-func (_call _ExpecterTest_NoReturn_Call) RunReturn(f func(str string) ()) _ExpecterTest_NoReturn_Call {
+func (_call _ExpecterTest_NoReturn_Call) RunReturn(f func(str string)) _ExpecterTest_NoReturn_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -105,7 +105,7 @@ type _ExpecterTest_Variadic_Call struct {
 	*mock.Call
 }
 
-func (_mock *ExpecterTest) Variadic(ints ...int) (error) {
+func (_mock *ExpecterTest) Variadic(ints ...int) error {
 	_mock.mock.T.Helper()
 	_args := []interface{}{}
 	for _, _variadic := range ints {
@@ -126,7 +126,7 @@ func (_call _ExpecterTest_Variadic_Call) Return(_r0 error) _ExpecterTest_Variadi
 	return _call
 }
 
-func (_call _ExpecterTest_Variadic_Call) RunReturn(f func(ints ...int) (error)) _ExpecterTest_Variadic_Call {
+func (_call _ExpecterTest_Variadic_Call) RunReturn(f func(ints ...int) error) _ExpecterTest_Variadic_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -135,7 +135,7 @@ type _ExpecterTest_VariadicMany_Call struct {
 	*mock.Call
 }
 
-func (_mock *ExpecterTest) VariadicMany(i int, a string, intfs ...interface{}) (error) {
+func (_mock *ExpecterTest) VariadicMany(i int, a string, intfs ...interface{}) error {
 	_mock.mock.T.Helper()
 	_args := []interface{}{i, a}
 	for _, _variadic := range intfs {
@@ -156,7 +156,7 @@ func (_call _ExpecterTest_VariadicMany_Call) Return(_r0 error) _ExpecterTest_Var
 	return _call
 }
 
-func (_call _ExpecterTest_VariadicMany_Call) RunReturn(f func(i int, a string, intfs ...interface{}) (error)) _ExpecterTest_VariadicMany_Call {
+func (_call _ExpecterTest_VariadicMany_Call) RunReturn(f func(i int, a string, intfs ...interface{}) error) _ExpecterTest_VariadicMany_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

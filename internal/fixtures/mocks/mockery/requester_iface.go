@@ -3,8 +3,8 @@
 package mockery
 
 import io "io"
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -22,16 +22,16 @@ type _RequesterIface_Expecter struct {
 }
 
 func (_mock *RequesterIface) EXPECT() _RequesterIface_Expecter {
-	 return _RequesterIface_Expecter{mock: _mock.mock}
+	return _RequesterIface_Expecter{mock: _mock.mock}
 }
 
 type _RequesterIface_Get_Call struct {
 	*mock.Call
 }
 
-func (_mock *RequesterIface) Get() (io.Reader) {
+func (_mock *RequesterIface) Get() io.Reader {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("Get", )
+	_results := _mock.mock.Called("Get")
 	var _r0 io.Reader
 	if _got := _results.Get(0); _got != nil {
 		_r0 = _got.(io.Reader)
@@ -40,7 +40,7 @@ func (_mock *RequesterIface) Get() (io.Reader) {
 }
 
 func (_expecter _RequesterIface_Expecter) Get() _RequesterIface_Get_Call {
-	return _RequesterIface_Get_Call{Call: _expecter.mock.ExpectCall("Get", )}
+	return _RequesterIface_Get_Call{Call: _expecter.mock.ExpectCall("Get")}
 }
 
 func (_call _RequesterIface_Get_Call) Return(_r0 io.Reader) _RequesterIface_Get_Call {
@@ -48,7 +48,7 @@ func (_call _RequesterIface_Get_Call) Return(_r0 io.Reader) _RequesterIface_Get_
 	return _call
 }
 
-func (_call _RequesterIface_Get_Call) RunReturn(f func() (io.Reader)) _RequesterIface_Get_Call {
+func (_call _RequesterIface_Get_Call) RunReturn(f func() io.Reader) _RequesterIface_Get_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

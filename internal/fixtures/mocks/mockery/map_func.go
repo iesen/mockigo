@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,14 +21,14 @@ type _MapFunc_Expecter struct {
 }
 
 func (_mock *MapFunc) EXPECT() _MapFunc_Expecter {
-	 return _MapFunc_Expecter{mock: _mock.mock}
+	return _MapFunc_Expecter{mock: _mock.mock}
 }
 
 type _MapFunc_Get_Call struct {
 	*mock.Call
 }
 
-func (_mock *MapFunc) Get(m map[string]func(string) string) (error) {
+func (_mock *MapFunc) Get(m map[string]func(string) string) error {
 	_mock.mock.T.Helper()
 	_results := _mock.mock.Called("Get", m)
 	_r0 := _results.Error(0)
@@ -44,7 +44,7 @@ func (_call _MapFunc_Get_Call) Return(_r0 error) _MapFunc_Get_Call {
 	return _call
 }
 
-func (_call _MapFunc_Get_Call) RunReturn(f func(m map[string]func(string) string) (error)) _MapFunc_Get_Call {
+func (_call _MapFunc_Get_Call) RunReturn(f func(m map[string]func(string) string) error) _MapFunc_Get_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

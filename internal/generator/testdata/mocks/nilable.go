@@ -2,8 +2,8 @@
 
 package data
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,5 +21,5 @@ type _Nilable_Expecter struct {
 }
 
 func (_mock *Nilable) EXPECT() _Nilable_Expecter {
-	 return _Nilable_Expecter{mock: _mock.mock}
+	return _Nilable_Expecter{mock: _mock.mock}
 }

@@ -2,8 +2,8 @@
 
 package comment
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,14 +21,14 @@ type _IfaceWithBuildTagInComment_Expecter struct {
 }
 
 func (_mock *IfaceWithBuildTagInComment) EXPECT() _IfaceWithBuildTagInComment_Expecter {
-	 return _IfaceWithBuildTagInComment_Expecter{mock: _mock.mock}
+	return _IfaceWithBuildTagInComment_Expecter{mock: _mock.mock}
 }
 
 type _IfaceWithBuildTagInComment_Sprintf_Call struct {
 	*mock.Call
 }
 
-func (_mock *IfaceWithBuildTagInComment) Sprintf(format string, a ...interface{}) (string) {
+func (_mock *IfaceWithBuildTagInComment) Sprintf(format string, a ...interface{}) string {
 	_mock.mock.T.Helper()
 	_args := []interface{}{format}
 	for _, _variadic := range a {
@@ -49,7 +49,7 @@ func (_call _IfaceWithBuildTagInComment_Sprintf_Call) Return(_r0 string) _IfaceW
 	return _call
 }
 
-func (_call _IfaceWithBuildTagInComment_Sprintf_Call) RunReturn(f func(format string, a ...interface{}) (string)) _IfaceWithBuildTagInComment_Sprintf_Call {
+func (_call _IfaceWithBuildTagInComment_Sprintf_Call) RunReturn(f func(format string, a ...interface{}) string) _IfaceWithBuildTagInComment_Sprintf_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

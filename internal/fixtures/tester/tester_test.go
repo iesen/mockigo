@@ -7,11 +7,11 @@ import (
 	text_template "text/template"
 	"time"
 
+	mocks "github.com/iesen/mockigo/internal/fixtures/mocks/our"
+	"github.com/iesen/mockigo/match"
+	"github.com/iesen/mockigo/mock"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	mocks "github.com/subtle-byte/mockigo/internal/fixtures/mocks/our"
-	"github.com/subtle-byte/mockigo/match"
-	"github.com/subtle-byte/mockigo/mock"
 )
 
 func TestSimpleInterface(t *testing.T) {

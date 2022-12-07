@@ -2,9 +2,9 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
-import mockery "github.com/subtle-byte/mockigo/internal/fixtures/mockery"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
+import mockery "github.com/iesen/mockigo/internal/fixtures/mockery"
 
 var _ = match.Any[int]
 
@@ -22,7 +22,7 @@ type _KeyManager_Expecter struct {
 }
 
 func (_mock *KeyManager) EXPECT() _KeyManager_Expecter {
-	 return _KeyManager_Expecter{mock: _mock.mock}
+	return _KeyManager_Expecter{mock: _mock.mock}
 }
 
 type _KeyManager_GetKey_Call struct {

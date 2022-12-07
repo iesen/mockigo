@@ -3,8 +3,8 @@
 package context
 
 import context "context"
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -22,14 +22,14 @@ type _CollideWithStdLib_Expecter struct {
 }
 
 func (_mock *CollideWithStdLib) EXPECT() _CollideWithStdLib_Expecter {
-	 return _CollideWithStdLib_Expecter{mock: _mock.mock}
+	return _CollideWithStdLib_Expecter{mock: _mock.mock}
 }
 
 type _CollideWithStdLib_NewClient_Call struct {
 	*mock.Call
 }
 
-func (_mock *CollideWithStdLib) NewClient(ctx context.Context) () {
+func (_mock *CollideWithStdLib) NewClient(ctx context.Context) {
 	_mock.mock.T.Helper()
 	_mock.mock.Called("NewClient", ctx)
 }
@@ -43,7 +43,7 @@ func (_call _CollideWithStdLib_NewClient_Call) Return() _CollideWithStdLib_NewCl
 	return _call
 }
 
-func (_call _CollideWithStdLib_NewClient_Call) RunReturn(f func(ctx context.Context) ()) _CollideWithStdLib_NewClient_Call {
+func (_call _CollideWithStdLib_NewClient_Call) RunReturn(f func(ctx context.Context)) _CollideWithStdLib_NewClient_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

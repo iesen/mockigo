@@ -3,8 +3,8 @@
 package mockery
 
 import json "encoding/json"
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -22,14 +22,14 @@ type _RequesterArgSameAsImport_Expecter struct {
 }
 
 func (_mock *RequesterArgSameAsImport) EXPECT() _RequesterArgSameAsImport_Expecter {
-	 return _RequesterArgSameAsImport_Expecter{mock: _mock.mock}
+	return _RequesterArgSameAsImport_Expecter{mock: _mock.mock}
 }
 
 type _RequesterArgSameAsImport_Get_Call struct {
 	*mock.Call
 }
 
-func (_mock *RequesterArgSameAsImport) Get(_a0 string) (*json.RawMessage) {
+func (_mock *RequesterArgSameAsImport) Get(_a0 string) *json.RawMessage {
 	_mock.mock.T.Helper()
 	_results := _mock.mock.Called("Get", _a0)
 	var _r0 *json.RawMessage
@@ -48,7 +48,7 @@ func (_call _RequesterArgSameAsImport_Get_Call) Return(_r0 *json.RawMessage) _Re
 	return _call
 }
 
-func (_call _RequesterArgSameAsImport_Get_Call) RunReturn(f func(json string) (*json.RawMessage)) _RequesterArgSameAsImport_Get_Call {
+func (_call _RequesterArgSameAsImport_Get_Call) RunReturn(f func(json string) *json.RawMessage) _RequesterArgSameAsImport_Get_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

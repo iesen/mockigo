@@ -2,9 +2,9 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
-import mockery "github.com/subtle-byte/mockigo/internal/fixtures/mockery"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
+import mockery "github.com/iesen/mockigo/internal/fixtures/mockery"
 
 var _ = match.Any[int]
 
@@ -22,14 +22,14 @@ type _UsesOtherPkgIface_Expecter struct {
 }
 
 func (_mock *UsesOtherPkgIface) EXPECT() _UsesOtherPkgIface_Expecter {
-	 return _UsesOtherPkgIface_Expecter{mock: _mock.mock}
+	return _UsesOtherPkgIface_Expecter{mock: _mock.mock}
 }
 
 type _UsesOtherPkgIface_DoSomethingElse_Call struct {
 	*mock.Call
 }
 
-func (_mock *UsesOtherPkgIface) DoSomethingElse(obj mockery.Sibling) () {
+func (_mock *UsesOtherPkgIface) DoSomethingElse(obj mockery.Sibling) {
 	_mock.mock.T.Helper()
 	_mock.mock.Called("DoSomethingElse", obj)
 }
@@ -43,7 +43,7 @@ func (_call _UsesOtherPkgIface_DoSomethingElse_Call) Return() _UsesOtherPkgIface
 	return _call
 }
 
-func (_call _UsesOtherPkgIface_DoSomethingElse_Call) RunReturn(f func(obj mockery.Sibling) ()) _UsesOtherPkgIface_DoSomethingElse_Call {
+func (_call _UsesOtherPkgIface_DoSomethingElse_Call) RunReturn(f func(obj mockery.Sibling)) _UsesOtherPkgIface_DoSomethingElse_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

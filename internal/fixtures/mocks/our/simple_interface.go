@@ -2,8 +2,8 @@
 
 package fixtures
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,14 +21,14 @@ type _SimpleInterface_Expecter struct {
 }
 
 func (_mock *SimpleInterface) EXPECT() _SimpleInterface_Expecter {
-	 return _SimpleInterface_Expecter{mock: _mock.mock}
+	return _SimpleInterface_Expecter{mock: _mock.mock}
 }
 
 type _SimpleInterface_Bar_Call struct {
 	*mock.Call
 }
 
-func (_mock *SimpleInterface) Bar(i int) (int) {
+func (_mock *SimpleInterface) Bar(i int) int {
 	_mock.mock.T.Helper()
 	_results := _mock.mock.Called("Bar", i)
 	_r0 := _results.Get(0).(int)
@@ -44,7 +44,7 @@ func (_call _SimpleInterface_Bar_Call) Return(_r0 int) _SimpleInterface_Bar_Call
 	return _call
 }
 
-func (_call _SimpleInterface_Bar_Call) RunReturn(f func(i int) (int)) _SimpleInterface_Bar_Call {
+func (_call _SimpleInterface_Bar_Call) RunReturn(f func(i int) int) _SimpleInterface_Bar_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

@@ -3,8 +3,8 @@
 package fixtures
 
 import html_template "html/template"
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 import text_template "text/template"
 
 var _ = match.Any[int]
@@ -23,14 +23,14 @@ type _SomeInterface_Expecter struct {
 }
 
 func (_mock *SomeInterface) EXPECT() _SomeInterface_Expecter {
-	 return _SomeInterface_Expecter{mock: _mock.mock}
+	return _SomeInterface_Expecter{mock: _mock.mock}
 }
 
 type _SomeInterface_Foo_Call struct {
 	*mock.Call
 }
 
-func (_mock *SomeInterface) Foo(i text_template.Template) (html_template.Template) {
+func (_mock *SomeInterface) Foo(i text_template.Template) html_template.Template {
 	_mock.mock.T.Helper()
 	_results := _mock.mock.Called("Foo", i)
 	_r0 := _results.Get(0).(html_template.Template)
@@ -46,7 +46,7 @@ func (_call _SomeInterface_Foo_Call) Return(_r0 html_template.Template) _SomeInt
 	return _call
 }
 
-func (_call _SomeInterface_Foo_Call) RunReturn(f func(i text_template.Template) (html_template.Template)) _SomeInterface_Foo_Call {
+func (_call _SomeInterface_Foo_Call) RunReturn(f func(i text_template.Template) html_template.Template) _SomeInterface_Foo_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

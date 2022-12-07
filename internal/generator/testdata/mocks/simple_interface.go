@@ -2,9 +2,9 @@
 
 package data
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
-import testdata "github.com/subtle-byte/mockigo/internal/generator/testdata"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
+import testdata "github.com/iesen/mockigo/internal/generator/testdata"
 import time "time"
 
 var _ = match.Any[int]
@@ -23,7 +23,7 @@ type _SimpleInterface_Expecter struct {
 }
 
 func (_mock *SimpleInterface) EXPECT() _SimpleInterface_Expecter {
-	 return _SimpleInterface_Expecter{mock: _mock.mock}
+	return _SimpleInterface_Expecter{mock: _mock.mock}
 }
 
 type _SimpleInterface_Foo_Call struct {

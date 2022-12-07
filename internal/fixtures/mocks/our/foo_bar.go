@@ -2,8 +2,8 @@
 
 package fixtures
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 import time "time"
 
 var _ = match.Any[int]
@@ -22,14 +22,14 @@ type _FooBar_Expecter struct {
 }
 
 func (_mock *FooBar) EXPECT() _FooBar_Expecter {
-	 return _FooBar_Expecter{mock: _mock.mock}
+	return _FooBar_Expecter{mock: _mock.mock}
 }
 
 type _FooBar_Bar_Call struct {
 	*mock.Call
 }
 
-func (_mock *FooBar) Bar(t time.Duration) () {
+func (_mock *FooBar) Bar(t time.Duration) {
 	_mock.mock.T.Helper()
 	_mock.mock.Called("Bar", t)
 }
@@ -43,7 +43,7 @@ func (_call _FooBar_Bar_Call) Return() _FooBar_Bar_Call {
 	return _call
 }
 
-func (_call _FooBar_Bar_Call) RunReturn(f func(t time.Duration) ()) _FooBar_Bar_Call {
+func (_call _FooBar_Bar_Call) RunReturn(f func(t time.Duration)) _FooBar_Bar_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -52,7 +52,7 @@ type _FooBar_Foo_Call struct {
 	*mock.Call
 }
 
-func (_mock *FooBar) Foo(a int) (int) {
+func (_mock *FooBar) Foo(a int) int {
 	_mock.mock.T.Helper()
 	_results := _mock.mock.Called("Foo", a)
 	_r0 := _results.Get(0).(int)
@@ -68,7 +68,7 @@ func (_call _FooBar_Foo_Call) Return(_r0 int) _FooBar_Foo_Call {
 	return _call
 }
 
-func (_call _FooBar_Foo_Call) RunReturn(f func(a int) (int)) _FooBar_Foo_Call {
+func (_call _FooBar_Foo_Call) RunReturn(f func(a int) int) _FooBar_Foo_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

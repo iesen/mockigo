@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,7 +21,7 @@ type _Requester_Expecter struct {
 }
 
 func (_mock *Requester) EXPECT() _Requester_Expecter {
-	 return _Requester_Expecter{mock: _mock.mock}
+	return _Requester_Expecter{mock: _mock.mock}
 }
 
 type _Requester_Get_Call struct {

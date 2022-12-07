@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,14 +21,14 @@ type _Requester2_Expecter struct {
 }
 
 func (_mock *Requester2) EXPECT() _Requester2_Expecter {
-	 return _Requester2_Expecter{mock: _mock.mock}
+	return _Requester2_Expecter{mock: _mock.mock}
 }
 
 type _Requester2_Get_Call struct {
 	*mock.Call
 }
 
-func (_mock *Requester2) Get(path string) (error) {
+func (_mock *Requester2) Get(path string) error {
 	_mock.mock.T.Helper()
 	_results := _mock.mock.Called("Get", path)
 	_r0 := _results.Error(0)
@@ -44,7 +44,7 @@ func (_call _Requester2_Get_Call) Return(_r0 error) _Requester2_Get_Call {
 	return _call
 }
 
-func (_call _Requester2_Get_Call) RunReturn(f func(path string) (error)) _Requester2_Get_Call {
+func (_call _Requester2_Get_Call) RunReturn(f func(path string) error) _Requester2_Get_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

@@ -2,8 +2,8 @@
 
 package data
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,14 +21,14 @@ type _GenericInterface_Expecter[T any] struct {
 }
 
 func (_mock *GenericInterface[T]) EXPECT() _GenericInterface_Expecter[T] {
-	 return _GenericInterface_Expecter[T]{mock: _mock.mock}
+	return _GenericInterface_Expecter[T]{mock: _mock.mock}
 }
 
 type _GenericInterface_Foo_Call[T any] struct {
 	*mock.Call
 }
 
-func (_mock *GenericInterface[T]) Foo(a int, b ...T) (T) {
+func (_mock *GenericInterface[T]) Foo(a int, b ...T) T {
 	_mock.mock.T.Helper()
 	_args := []interface{}{a}
 	for _, _variadic := range b {
@@ -49,7 +49,7 @@ func (_call _GenericInterface_Foo_Call[T]) Return(_r0 T) _GenericInterface_Foo_C
 	return _call
 }
 
-func (_call _GenericInterface_Foo_Call[T]) RunReturn(f func(a int, b ...T) (T)) _GenericInterface_Foo_Call[T] {
+func (_call _GenericInterface_Foo_Call[T]) RunReturn(f func(a int, b ...T) T) _GenericInterface_Foo_Call[T] {
 	_call.Call.RunReturn(f)
 	return _call
 }

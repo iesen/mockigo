@@ -3,8 +3,8 @@
 package mockery
 
 import io "io"
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -22,14 +22,14 @@ type _RequesterVariadic_Expecter struct {
 }
 
 func (_mock *RequesterVariadic) EXPECT() _RequesterVariadic_Expecter {
-	 return _RequesterVariadic_Expecter{mock: _mock.mock}
+	return _RequesterVariadic_Expecter{mock: _mock.mock}
 }
 
 type _RequesterVariadic_Get_Call struct {
 	*mock.Call
 }
 
-func (_mock *RequesterVariadic) Get(values ...string) (bool) {
+func (_mock *RequesterVariadic) Get(values ...string) bool {
 	_mock.mock.T.Helper()
 	_args := []interface{}{}
 	for _, _variadic := range values {
@@ -50,7 +50,7 @@ func (_call _RequesterVariadic_Get_Call) Return(_r0 bool) _RequesterVariadic_Get
 	return _call
 }
 
-func (_call _RequesterVariadic_Get_Call) RunReturn(f func(values ...string) (bool)) _RequesterVariadic_Get_Call {
+func (_call _RequesterVariadic_Get_Call) RunReturn(f func(values ...string) bool) _RequesterVariadic_Get_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -59,7 +59,7 @@ type _RequesterVariadic_MultiWriteToFile_Call struct {
 	*mock.Call
 }
 
-func (_mock *RequesterVariadic) MultiWriteToFile(filename string, w ...io.Writer) (string) {
+func (_mock *RequesterVariadic) MultiWriteToFile(filename string, w ...io.Writer) string {
 	_mock.mock.T.Helper()
 	_args := []interface{}{filename}
 	for _, _variadic := range w {
@@ -80,7 +80,7 @@ func (_call _RequesterVariadic_MultiWriteToFile_Call) Return(_r0 string) _Reques
 	return _call
 }
 
-func (_call _RequesterVariadic_MultiWriteToFile_Call) RunReturn(f func(filename string, w ...io.Writer) (string)) _RequesterVariadic_MultiWriteToFile_Call {
+func (_call _RequesterVariadic_MultiWriteToFile_Call) RunReturn(f func(filename string, w ...io.Writer) string) _RequesterVariadic_MultiWriteToFile_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -89,7 +89,7 @@ type _RequesterVariadic_OneInterface_Call struct {
 	*mock.Call
 }
 
-func (_mock *RequesterVariadic) OneInterface(a ...interface{}) (bool) {
+func (_mock *RequesterVariadic) OneInterface(a ...interface{}) bool {
 	_mock.mock.T.Helper()
 	_args := []interface{}{}
 	for _, _variadic := range a {
@@ -110,7 +110,7 @@ func (_call _RequesterVariadic_OneInterface_Call) Return(_r0 bool) _RequesterVar
 	return _call
 }
 
-func (_call _RequesterVariadic_OneInterface_Call) RunReturn(f func(a ...interface{}) (bool)) _RequesterVariadic_OneInterface_Call {
+func (_call _RequesterVariadic_OneInterface_Call) RunReturn(f func(a ...interface{}) bool) _RequesterVariadic_OneInterface_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -119,7 +119,7 @@ type _RequesterVariadic_Sprintf_Call struct {
 	*mock.Call
 }
 
-func (_mock *RequesterVariadic) Sprintf(format string, a ...interface{}) (string) {
+func (_mock *RequesterVariadic) Sprintf(format string, a ...interface{}) string {
 	_mock.mock.T.Helper()
 	_args := []interface{}{format}
 	for _, _variadic := range a {
@@ -140,7 +140,7 @@ func (_call _RequesterVariadic_Sprintf_Call) Return(_r0 string) _RequesterVariad
 	return _call
 }
 
-func (_call _RequesterVariadic_Sprintf_Call) RunReturn(f func(format string, a ...interface{}) (string)) _RequesterVariadic_Sprintf_Call {
+func (_call _RequesterVariadic_Sprintf_Call) RunReturn(f func(format string, a ...interface{}) string) _RequesterVariadic_Sprintf_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

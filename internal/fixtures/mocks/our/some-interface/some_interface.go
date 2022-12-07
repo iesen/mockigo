@@ -2,8 +2,8 @@
 
 package some_interface
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,22 +21,22 @@ type _SomeInterface_Expecter struct {
 }
 
 func (_mock *SomeInterface) EXPECT() _SomeInterface_Expecter {
-	 return _SomeInterface_Expecter{mock: _mock.mock}
+	return _SomeInterface_Expecter{mock: _mock.mock}
 }
 
 type _SomeInterface_SomeMethod_Call struct {
 	*mock.Call
 }
 
-func (_mock *SomeInterface) SomeMethod() (int) {
+func (_mock *SomeInterface) SomeMethod() int {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("SomeMethod", )
+	_results := _mock.mock.Called("SomeMethod")
 	_r0 := _results.Get(0).(int)
 	return _r0
 }
 
 func (_expecter _SomeInterface_Expecter) SomeMethod() _SomeInterface_SomeMethod_Call {
-	return _SomeInterface_SomeMethod_Call{Call: _expecter.mock.ExpectCall("SomeMethod", )}
+	return _SomeInterface_SomeMethod_Call{Call: _expecter.mock.ExpectCall("SomeMethod")}
 }
 
 func (_call _SomeInterface_SomeMethod_Call) Return(_r0 int) _SomeInterface_SomeMethod_Call {
@@ -44,7 +44,7 @@ func (_call _SomeInterface_SomeMethod_Call) Return(_r0 int) _SomeInterface_SomeM
 	return _call
 }
 
-func (_call _SomeInterface_SomeMethod_Call) RunReturn(f func() (int)) _SomeInterface_SomeMethod_Call {
+func (_call _SomeInterface_SomeMethod_Call) RunReturn(f func() int) _SomeInterface_SomeMethod_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

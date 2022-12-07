@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,14 +21,14 @@ type _RequesterArgSameAsPkg_Expecter struct {
 }
 
 func (_mock *RequesterArgSameAsPkg) EXPECT() _RequesterArgSameAsPkg_Expecter {
-	 return _RequesterArgSameAsPkg_Expecter{mock: _mock.mock}
+	return _RequesterArgSameAsPkg_Expecter{mock: _mock.mock}
 }
 
 type _RequesterArgSameAsPkg_Get_Call struct {
 	*mock.Call
 }
 
-func (_mock *RequesterArgSameAsPkg) Get(test string) () {
+func (_mock *RequesterArgSameAsPkg) Get(test string) {
 	_mock.mock.T.Helper()
 	_mock.mock.Called("Get", test)
 }
@@ -42,7 +42,7 @@ func (_call _RequesterArgSameAsPkg_Get_Call) Return() _RequesterArgSameAsPkg_Get
 	return _call
 }
 
-func (_call _RequesterArgSameAsPkg_Get_Call) RunReturn(f func(test string) ()) _RequesterArgSameAsPkg_Get_Call {
+func (_call _RequesterArgSameAsPkg_Get_Call) RunReturn(f func(test string)) _RequesterArgSameAsPkg_Get_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

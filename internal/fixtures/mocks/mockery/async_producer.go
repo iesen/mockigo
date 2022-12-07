@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,16 +21,16 @@ type _AsyncProducer_Expecter struct {
 }
 
 func (_mock *AsyncProducer) EXPECT() _AsyncProducer_Expecter {
-	 return _AsyncProducer_Expecter{mock: _mock.mock}
+	return _AsyncProducer_Expecter{mock: _mock.mock}
 }
 
 type _AsyncProducer_Input_Call struct {
 	*mock.Call
 }
 
-func (_mock *AsyncProducer) Input() (chan<- bool) {
+func (_mock *AsyncProducer) Input() chan<- bool {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("Input", )
+	_results := _mock.mock.Called("Input")
 	var _r0 chan<- bool
 	if _got := _results.Get(0); _got != nil {
 		_r0 = _got.(chan<- bool)
@@ -39,7 +39,7 @@ func (_mock *AsyncProducer) Input() (chan<- bool) {
 }
 
 func (_expecter _AsyncProducer_Expecter) Input() _AsyncProducer_Input_Call {
-	return _AsyncProducer_Input_Call{Call: _expecter.mock.ExpectCall("Input", )}
+	return _AsyncProducer_Input_Call{Call: _expecter.mock.ExpectCall("Input")}
 }
 
 func (_call _AsyncProducer_Input_Call) Return(_r0 chan<- bool) _AsyncProducer_Input_Call {
@@ -47,7 +47,7 @@ func (_call _AsyncProducer_Input_Call) Return(_r0 chan<- bool) _AsyncProducer_In
 	return _call
 }
 
-func (_call _AsyncProducer_Input_Call) RunReturn(f func() (chan<- bool)) _AsyncProducer_Input_Call {
+func (_call _AsyncProducer_Input_Call) RunReturn(f func() chan<- bool) _AsyncProducer_Input_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -56,9 +56,9 @@ type _AsyncProducer_Output_Call struct {
 	*mock.Call
 }
 
-func (_mock *AsyncProducer) Output() (<-chan bool) {
+func (_mock *AsyncProducer) Output() <-chan bool {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("Output", )
+	_results := _mock.mock.Called("Output")
 	var _r0 <-chan bool
 	if _got := _results.Get(0); _got != nil {
 		_r0 = _got.(<-chan bool)
@@ -67,7 +67,7 @@ func (_mock *AsyncProducer) Output() (<-chan bool) {
 }
 
 func (_expecter _AsyncProducer_Expecter) Output() _AsyncProducer_Output_Call {
-	return _AsyncProducer_Output_Call{Call: _expecter.mock.ExpectCall("Output", )}
+	return _AsyncProducer_Output_Call{Call: _expecter.mock.ExpectCall("Output")}
 }
 
 func (_call _AsyncProducer_Output_Call) Return(_r0 <-chan bool) _AsyncProducer_Output_Call {
@@ -75,7 +75,7 @@ func (_call _AsyncProducer_Output_Call) Return(_r0 <-chan bool) _AsyncProducer_O
 	return _call
 }
 
-func (_call _AsyncProducer_Output_Call) RunReturn(f func() (<-chan bool)) _AsyncProducer_Output_Call {
+func (_call _AsyncProducer_Output_Call) RunReturn(f func() <-chan bool) _AsyncProducer_Output_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -84,9 +84,9 @@ type _AsyncProducer_Whatever_Call struct {
 	*mock.Call
 }
 
-func (_mock *AsyncProducer) Whatever() (chan bool) {
+func (_mock *AsyncProducer) Whatever() chan bool {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("Whatever", )
+	_results := _mock.mock.Called("Whatever")
 	var _r0 chan bool
 	if _got := _results.Get(0); _got != nil {
 		_r0 = _got.(chan bool)
@@ -95,7 +95,7 @@ func (_mock *AsyncProducer) Whatever() (chan bool) {
 }
 
 func (_expecter _AsyncProducer_Expecter) Whatever() _AsyncProducer_Whatever_Call {
-	return _AsyncProducer_Whatever_Call{Call: _expecter.mock.ExpectCall("Whatever", )}
+	return _AsyncProducer_Whatever_Call{Call: _expecter.mock.ExpectCall("Whatever")}
 }
 
 func (_call _AsyncProducer_Whatever_Call) Return(_r0 chan bool) _AsyncProducer_Whatever_Call {
@@ -103,7 +103,7 @@ func (_call _AsyncProducer_Whatever_Call) Return(_r0 chan bool) _AsyncProducer_W
 	return _call
 }
 
-func (_call _AsyncProducer_Whatever_Call) RunReturn(f func() (chan bool)) _AsyncProducer_Whatever_Call {
+func (_call _AsyncProducer_Whatever_Call) RunReturn(f func() chan bool) _AsyncProducer_Whatever_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

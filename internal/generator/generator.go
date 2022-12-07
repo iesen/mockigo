@@ -11,8 +11,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/subtle-byte/mockigo/internal/generator/path_trie"
-	"github.com/subtle-byte/mockigo/internal/generator/string_util"
+	"github.com/iesen/mockigo/internal/generator/path_trie"
+	"github.com/iesen/mockigo/internal/generator/string_util"
 	"golang.org/x/exp/maps"
 	"golang.org/x/tools/go/packages"
 )
@@ -188,7 +188,8 @@ func generateImports(w *writer, methods []*types.Func, typeParams *types.TypePar
 	return
 }
 
-func genericFormats(typeParams *types.TypeParamList, pkgQualifier func(pkg *types.Package) string) (onInterface, inReceiver string) {
+func genericFormats(typeParams *types.TypeParamList,
+	pkgQualifier func(pkg *types.Package) string) (onInterface, inReceiver string) {
 	if typeParams == nil {
 		return "", ""
 	}
@@ -206,7 +207,8 @@ func genericFormats(typeParams *types.TypeParamList, pkgQualifier func(pkg *type
 	return
 }
 
-func generateForInterface(pkgName, interfaceName string, typeParams *types.TypeParamList, methods []*types.Func) ([]byte, error) {
+func generateForInterface(pkgName, interfaceName string, typeParams *types.TypeParamList,
+	methods []*types.Func) ([]byte, error) {
 	buf := &bytes.Buffer{}
 	w := &writer{buf: buf}
 
@@ -223,7 +225,8 @@ func generateForInterface(pkgName, interfaceName string, typeParams *types.TypeP
 	w.Println()
 	w.Println("type ", interfaceName, typeParamsOnInterface, " struct {\n\tmock *mock.Mock\n}")
 	w.Println()
-	w.Println("func New", interfaceName, typeParamsOnInterface, "(t mock.Testing) *", interfaceName, typeParamsInReceiver, " {")
+	w.Println("func New", interfaceName, typeParamsOnInterface, "(t mock.Testing) *", interfaceName,
+		typeParamsInReceiver, " {")
 	w.Println("\tt.Helper()")
 	w.Println("\treturn &", interfaceName, typeParamsInReceiver, "{mock: mock.NewMock(t)}")
 	w.Println("}")
@@ -237,7 +240,8 @@ func generateForInterface(pkgName, interfaceName string, typeParams *types.TypeP
 	w.Println("}")
 
 	for _, method := range methods {
-		generateForMethod(w, interfaceName, typeParamsOnInterface, typeParamsInReceiver, expecterStruct, method, pkgQualifier, importNames)
+		generateForMethod(w, interfaceName, typeParamsOnInterface, typeParamsInReceiver, expecterStruct, method,
+			pkgQualifier, importNames)
 	}
 
 	return buf.Bytes(), w.err
@@ -255,7 +259,8 @@ func isNilable(aType types.Type) bool {
 	}
 }
 
-func generateForMethod(w *writer, interfaceName, typeParamsOnInterface, typeParamsInReceiver, expecterStruct string, method *types.Func, pkgQualifier func(pkg *types.Package) string, forbiddenNames map[string]struct{}) {
+func generateForMethod(w *writer, interfaceName, typeParamsOnInterface, typeParamsInReceiver, expecterStruct string,
+	method *types.Func, pkgQualifier func(pkg *types.Package) string, forbiddenNames map[string]struct{}) {
 	signature := method.Type().(*types.Signature)
 	variadic := signature.Variadic()
 
@@ -266,7 +271,8 @@ func generateForMethod(w *writer, interfaceName, typeParamsOnInterface, typePara
 	w.Println()
 	w.Println("type ", callStruct, typeParamsOnInterface, " struct {\n\t*mock.Call\n}")
 	callStruct += typeParamsInReceiver
-	w.Println("\nfunc (_mock *", interfaceName, typeParamsInReceiver, ") ", method.Name(), "(", inFormats.NamedParams, ") (", outFormats.RawParams, ") {")
+	w.Println("\nfunc (_mock *", interfaceName, typeParamsInReceiver, ") ", method.Name(), "(", inFormats.NamedParams,
+		") (", outFormats.RawParams, ") {")
 	w.Println("\t_mock.mock.T.Helper()")
 	w.Print(inFormats.VariadicArgsEval)
 	results := "_results := "
@@ -303,12 +309,15 @@ func generateForMethod(w *writer, interfaceName, typeParamsOnInterface, typePara
 	w.Println("}")
 
 	w.Println()
-	w.Println("func (_expecter ", expecterStruct, ") ", method.Name(), "(", inFormats.NamedArgedParams, ") ", callStruct, " {")
+	w.Println("func (_expecter ", expecterStruct, ") ", method.Name(), "(", inFormats.NamedArgedParams, ") ",
+		callStruct, " {")
 	w.Print(inFormats.VariadicArgedArgsEval)
 	if !variadic {
-		w.Println("\treturn ", callStruct, `{Call: _expecter.mock.ExpectCall("`, method.Name(), `", `, inFormats.ArgedArgs, ")}")
+		w.Println("\treturn ", callStruct, `{Call: _expecter.mock.ExpectCall("`, method.Name(), `", `,
+			inFormats.ArgedArgs, ")}")
 	} else {
-		w.Println("\treturn ", callStruct, `{Call: _expecter.mock.ExpectCall("`, method.Name(), `", `, inFormats.VariadicArgs, ")}")
+		w.Println("\treturn ", callStruct, `{Call: _expecter.mock.ExpectCall("`, method.Name(), `", `,
+			inFormats.VariadicArgs, ")}")
 	}
 	w.Println("}")
 

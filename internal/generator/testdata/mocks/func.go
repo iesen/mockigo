@@ -2,8 +2,8 @@
 
 package data
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,20 +21,20 @@ type _Func_Expecter struct {
 }
 
 func (_mock *Func) EXPECT() _Func_Expecter {
-	 return _Func_Expecter{mock: _mock.mock}
+	return _Func_Expecter{mock: _mock.mock}
 }
 
 type _Func_Execute_Call struct {
 	*mock.Call
 }
 
-func (_mock *Func) Execute() () {
+func (_mock *Func) Execute() {
 	_mock.mock.T.Helper()
-	_mock.mock.Called("Execute", )
+	_mock.mock.Called("Execute")
 }
 
 func (_expecter _Func_Expecter) Execute() _Func_Execute_Call {
-	return _Func_Execute_Call{Call: _expecter.mock.ExpectCall("Execute", )}
+	return _Func_Execute_Call{Call: _expecter.mock.ExpectCall("Execute")}
 }
 
 func (_call _Func_Execute_Call) Return() _Func_Execute_Call {
@@ -42,7 +42,7 @@ func (_call _Func_Execute_Call) Return() _Func_Execute_Call {
 	return _call
 }
 
-func (_call _Func_Execute_Call) RunReturn(f func() ()) _Func_Execute_Call {
+func (_call _Func_Execute_Call) RunReturn(f func()) _Func_Execute_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

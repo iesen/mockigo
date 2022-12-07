@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,14 +21,14 @@ type _MapToInterface_Expecter struct {
 }
 
 func (_mock *MapToInterface) EXPECT() _MapToInterface_Expecter {
-	 return _MapToInterface_Expecter{mock: _mock.mock}
+	return _MapToInterface_Expecter{mock: _mock.mock}
 }
 
 type _MapToInterface_Foo_Call struct {
 	*mock.Call
 }
 
-func (_mock *MapToInterface) Foo(arg1 ...map[string]interface{}) () {
+func (_mock *MapToInterface) Foo(arg1 ...map[string]interface{}) {
 	_mock.mock.T.Helper()
 	_args := []interface{}{}
 	for _, _variadic := range arg1 {
@@ -47,7 +47,7 @@ func (_call _MapToInterface_Foo_Call) Return() _MapToInterface_Foo_Call {
 	return _call
 }
 
-func (_call _MapToInterface_Foo_Call) RunReturn(f func(arg1 ...map[string]interface{}) ()) _MapToInterface_Foo_Call {
+func (_call _MapToInterface_Foo_Call) RunReturn(f func(arg1 ...map[string]interface{})) _MapToInterface_Foo_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

@@ -3,7 +3,7 @@ package mockery
 import (
 	"net/http"
 
-	my_http "github.com/subtle-byte/mockigo/internal/fixtures/mockery/http"
+	my_http "github.com/iesen/mockigo/internal/fixtures/mockery/http"
 )
 
 // Example is an example

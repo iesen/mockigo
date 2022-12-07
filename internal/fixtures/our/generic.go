@@ -1,6 +1,6 @@
 package fixtures
 
-import someinterface "github.com/subtle-byte/mockigo/internal/fixtures/our/some-interface"
+import someinterface "github.com/iesen/mockigo/internal/fixtures/our/some-interface"
 
 type GenericInterface[T any, B someinterface.SomeInterface, G ~int | float32] interface {
 	SomeMethod(B) T

@@ -3,8 +3,8 @@
 package mockery
 
 import context "context"
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -22,7 +22,7 @@ type _SendFunc_Expecter struct {
 }
 
 func (_mock *SendFunc) EXPECT() _SendFunc_Expecter {
-	 return _SendFunc_Expecter{mock: _mock.mock}
+	return _SendFunc_Expecter{mock: _mock.mock}
 }
 
 type _SendFunc_Execute_Call struct {

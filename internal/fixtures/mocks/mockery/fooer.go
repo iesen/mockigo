@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,14 +21,14 @@ type _Fooer_Expecter struct {
 }
 
 func (_mock *Fooer) EXPECT() _Fooer_Expecter {
-	 return _Fooer_Expecter{mock: _mock.mock}
+	return _Fooer_Expecter{mock: _mock.mock}
 }
 
 type _Fooer_Bar_Call struct {
 	*mock.Call
 }
 
-func (_mock *Fooer) Bar(f func([]int)) () {
+func (_mock *Fooer) Bar(f func([]int)) {
 	_mock.mock.T.Helper()
 	_mock.mock.Called("Bar", f)
 }
@@ -42,7 +42,7 @@ func (_call _Fooer_Bar_Call) Return() _Fooer_Bar_Call {
 	return _call
 }
 
-func (_call _Fooer_Bar_Call) RunReturn(f func(f func([]int)) ()) _Fooer_Bar_Call {
+func (_call _Fooer_Bar_Call) RunReturn(f func(f func([]int))) _Fooer_Bar_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -51,7 +51,7 @@ type _Fooer_Baz_Call struct {
 	*mock.Call
 }
 
-func (_mock *Fooer) Baz(path string) (func(x string) string) {
+func (_mock *Fooer) Baz(path string) func(x string) string {
 	_mock.mock.T.Helper()
 	_results := _mock.mock.Called("Baz", path)
 	var _r0 func(x string) string
@@ -70,7 +70,7 @@ func (_call _Fooer_Baz_Call) Return(_r0 func(x string) string) _Fooer_Baz_Call {
 	return _call
 }
 
-func (_call _Fooer_Baz_Call) RunReturn(f func(path string) (func(x string) string)) _Fooer_Baz_Call {
+func (_call _Fooer_Baz_Call) RunReturn(f func(path string) func(x string) string) _Fooer_Baz_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -79,7 +79,7 @@ type _Fooer_Foo_Call struct {
 	*mock.Call
 }
 
-func (_mock *Fooer) Foo(f func(x string) string) (error) {
+func (_mock *Fooer) Foo(f func(x string) string) error {
 	_mock.mock.T.Helper()
 	_results := _mock.mock.Called("Foo", f)
 	_r0 := _results.Error(0)
@@ -95,7 +95,7 @@ func (_call _Fooer_Foo_Call) Return(_r0 error) _Fooer_Foo_Call {
 	return _call
 }
 
-func (_call _Fooer_Foo_Call) RunReturn(f func(f func(x string) string) (error)) _Fooer_Foo_Call {
+func (_call _Fooer_Foo_Call) RunReturn(f func(f func(x string) string) error) _Fooer_Foo_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

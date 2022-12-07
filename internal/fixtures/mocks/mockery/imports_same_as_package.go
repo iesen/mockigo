@@ -2,10 +2,10 @@
 
 package mockery
 
-import fixtures_mockery "github.com/subtle-byte/mockigo/internal/fixtures/mockery"
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
-import mockery_mockery "github.com/subtle-byte/mockigo/internal/fixtures/mockery/mockery"
+import fixtures_mockery "github.com/iesen/mockigo/internal/fixtures/mockery"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
+import mockery_mockery "github.com/iesen/mockigo/internal/fixtures/mockery/mockery"
 
 var _ = match.Any[int]
 
@@ -23,22 +23,22 @@ type _ImportsSameAsPackage_Expecter struct {
 }
 
 func (_mock *ImportsSameAsPackage) EXPECT() _ImportsSameAsPackage_Expecter {
-	 return _ImportsSameAsPackage_Expecter{mock: _mock.mock}
+	return _ImportsSameAsPackage_Expecter{mock: _mock.mock}
 }
 
 type _ImportsSameAsPackage_A_Call struct {
 	*mock.Call
 }
 
-func (_mock *ImportsSameAsPackage) A() (mockery_mockery.B) {
+func (_mock *ImportsSameAsPackage) A() mockery_mockery.B {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("A", )
+	_results := _mock.mock.Called("A")
 	_r0 := _results.Get(0).(mockery_mockery.B)
 	return _r0
 }
 
 func (_expecter _ImportsSameAsPackage_Expecter) A() _ImportsSameAsPackage_A_Call {
-	return _ImportsSameAsPackage_A_Call{Call: _expecter.mock.ExpectCall("A", )}
+	return _ImportsSameAsPackage_A_Call{Call: _expecter.mock.ExpectCall("A")}
 }
 
 func (_call _ImportsSameAsPackage_A_Call) Return(_r0 mockery_mockery.B) _ImportsSameAsPackage_A_Call {
@@ -46,7 +46,7 @@ func (_call _ImportsSameAsPackage_A_Call) Return(_r0 mockery_mockery.B) _Imports
 	return _call
 }
 
-func (_call _ImportsSameAsPackage_A_Call) RunReturn(f func() (mockery_mockery.B)) _ImportsSameAsPackage_A_Call {
+func (_call _ImportsSameAsPackage_A_Call) RunReturn(f func() mockery_mockery.B) _ImportsSameAsPackage_A_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -55,9 +55,9 @@ type _ImportsSameAsPackage_B_Call struct {
 	*mock.Call
 }
 
-func (_mock *ImportsSameAsPackage) B() (fixtures_mockery.KeyManager) {
+func (_mock *ImportsSameAsPackage) B() fixtures_mockery.KeyManager {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("B", )
+	_results := _mock.mock.Called("B")
 	var _r0 fixtures_mockery.KeyManager
 	if _got := _results.Get(0); _got != nil {
 		_r0 = _got.(fixtures_mockery.KeyManager)
@@ -66,7 +66,7 @@ func (_mock *ImportsSameAsPackage) B() (fixtures_mockery.KeyManager) {
 }
 
 func (_expecter _ImportsSameAsPackage_Expecter) B() _ImportsSameAsPackage_B_Call {
-	return _ImportsSameAsPackage_B_Call{Call: _expecter.mock.ExpectCall("B", )}
+	return _ImportsSameAsPackage_B_Call{Call: _expecter.mock.ExpectCall("B")}
 }
 
 func (_call _ImportsSameAsPackage_B_Call) Return(_r0 fixtures_mockery.KeyManager) _ImportsSameAsPackage_B_Call {
@@ -74,7 +74,7 @@ func (_call _ImportsSameAsPackage_B_Call) Return(_r0 fixtures_mockery.KeyManager
 	return _call
 }
 
-func (_call _ImportsSameAsPackage_B_Call) RunReturn(f func() (fixtures_mockery.KeyManager)) _ImportsSameAsPackage_B_Call {
+func (_call _ImportsSameAsPackage_B_Call) RunReturn(f func() fixtures_mockery.KeyManager) _ImportsSameAsPackage_B_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -83,7 +83,7 @@ type _ImportsSameAsPackage_C_Call struct {
 	*mock.Call
 }
 
-func (_mock *ImportsSameAsPackage) C(_a0 fixtures_mockery.C) () {
+func (_mock *ImportsSameAsPackage) C(_a0 fixtures_mockery.C) {
 	_mock.mock.T.Helper()
 	_mock.mock.Called("C", _a0)
 }
@@ -97,7 +97,7 @@ func (_call _ImportsSameAsPackage_C_Call) Return() _ImportsSameAsPackage_C_Call 
 	return _call
 }
 
-func (_call _ImportsSameAsPackage_C_Call) RunReturn(f func(fixtures_mockery.C) ()) _ImportsSameAsPackage_C_Call {
+func (_call _ImportsSameAsPackage_C_Call) RunReturn(f func(fixtures_mockery.C)) _ImportsSameAsPackage_C_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

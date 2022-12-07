@@ -2,8 +2,8 @@
 
 package fixtures
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,14 +21,14 @@ type _BarFoo_Expecter struct {
 }
 
 func (_mock *BarFoo) EXPECT() _BarFoo_Expecter {
-	 return _BarFoo_Expecter{mock: _mock.mock}
+	return _BarFoo_Expecter{mock: _mock.mock}
 }
 
 type _BarFoo_Bar_Call struct {
 	*mock.Call
 }
 
-func (_mock *BarFoo) Bar(_a0 int) (string) {
+func (_mock *BarFoo) Bar(_a0 int) string {
 	_mock.mock.T.Helper()
 	_results := _mock.mock.Called("Bar", _a0)
 	_r0 := _results.Get(0).(string)
@@ -44,7 +44,7 @@ func (_call _BarFoo_Bar_Call) Return(_r0 string) _BarFoo_Bar_Call {
 	return _call
 }
 
-func (_call _BarFoo_Bar_Call) RunReturn(f func(int) (string)) _BarFoo_Bar_Call {
+func (_call _BarFoo_Bar_Call) RunReturn(f func(int) string) _BarFoo_Bar_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -53,7 +53,7 @@ type _BarFoo_Foo_Call struct {
 	*mock.Call
 }
 
-func (_mock *BarFoo) Foo(_a0 int, _a1 string) (int) {
+func (_mock *BarFoo) Foo(_a0 int, _a1 string) int {
 	_mock.mock.T.Helper()
 	_results := _mock.mock.Called("Foo", _a0, _a1)
 	_r0 := _results.Get(0).(int)
@@ -69,7 +69,7 @@ func (_call _BarFoo_Foo_Call) Return(_r0 int) _BarFoo_Foo_Call {
 	return _call
 }
 
-func (_call _BarFoo_Foo_Call) RunReturn(f func(int, string) (int)) _BarFoo_Foo_Call {
+func (_call _BarFoo_Foo_Call) RunReturn(f func(int, string) int) _BarFoo_Foo_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

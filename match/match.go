@@ -1,8 +1,8 @@
 package match
 
 import (
-	"github.com/subtle-byte/mockigo/internal/util"
-	"github.com/subtle-byte/mockigo/mock"
+	"github.com/iesen/mockigo/internal/util"
+	"github.com/iesen/mockigo/mock"
 )
 
 type Arg[T any] struct {
@@ -25,17 +25,21 @@ func Any[T any]() Arg[T] {
 }
 
 func Not[T any](arg Arg[T]) Arg[T] {
-	return Arg[T]{func(x interface{}) bool {
-		return !arg.Arg(x)
-	}}
+	return Arg[T]{
+		func(x interface{}) bool {
+			return !arg.Arg(x)
+		},
+	}
 }
 
 func MatchedBy[T any](matcher func(T) bool) Arg[T] {
-	return Arg[T]{func(x interface{}) bool {
-		t, ok := x.(T)
-		if !ok {
-			return false
-		}
-		return matcher(t)
-	}}
+	return Arg[T]{
+		func(x interface{}) bool {
+			t, ok := x.(T)
+			if !ok {
+				return false
+			}
+			return matcher(t)
+		},
+	}
 }

@@ -2,34 +2,34 @@
 
 package fixtures
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
-import someinterface "github.com/subtle-byte/mockigo/internal/fixtures/our/some-interface"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
+import someinterface "github.com/iesen/mockigo/internal/fixtures/our/some-interface"
 
 var _ = match.Any[int]
 
-type GenericInterface[T any, B someinterface.SomeInterface, G ~int|float32] struct {
+type GenericInterface[T any, B someinterface.SomeInterface, G ~int | float32] struct {
 	mock *mock.Mock
 }
 
-func NewGenericInterface[T any, B someinterface.SomeInterface, G ~int|float32](t mock.Testing) *GenericInterface[T, B, G] {
+func NewGenericInterface[T any, B someinterface.SomeInterface, G ~int | float32](t mock.Testing) *GenericInterface[T, B, G] {
 	t.Helper()
 	return &GenericInterface[T, B, G]{mock: mock.NewMock(t)}
 }
 
-type _GenericInterface_Expecter[T any, B someinterface.SomeInterface, G ~int|float32] struct {
+type _GenericInterface_Expecter[T any, B someinterface.SomeInterface, G ~int | float32] struct {
 	mock *mock.Mock
 }
 
 func (_mock *GenericInterface[T, B, G]) EXPECT() _GenericInterface_Expecter[T, B, G] {
-	 return _GenericInterface_Expecter[T, B, G]{mock: _mock.mock}
+	return _GenericInterface_Expecter[T, B, G]{mock: _mock.mock}
 }
 
-type _GenericInterface_SomeMethod_Call[T any, B someinterface.SomeInterface, G ~int|float32] struct {
+type _GenericInterface_SomeMethod_Call[T any, B someinterface.SomeInterface, G ~int | float32] struct {
 	*mock.Call
 }
 
-func (_mock *GenericInterface[T, B, G]) SomeMethod(_a0 B) (T) {
+func (_mock *GenericInterface[T, B, G]) SomeMethod(_a0 B) T {
 	_mock.mock.T.Helper()
 	_results := _mock.mock.Called("SomeMethod", _a0)
 	_r0 := _results.Get(0).(T)
@@ -45,7 +45,7 @@ func (_call _GenericInterface_SomeMethod_Call[T, B, G]) Return(_r0 T) _GenericIn
 	return _call
 }
 
-func (_call _GenericInterface_SomeMethod_Call[T, B, G]) RunReturn(f func(B) (T)) _GenericInterface_SomeMethod_Call[T, B, G] {
+func (_call _GenericInterface_SomeMethod_Call[T, B, G]) RunReturn(f func(B) T) _GenericInterface_SomeMethod_Call[T, B, G] {
 	_call.Call.RunReturn(f)
 	return _call
 }

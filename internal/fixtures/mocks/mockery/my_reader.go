@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,7 +21,7 @@ type _MyReader_Expecter struct {
 }
 
 func (_mock *MyReader) EXPECT() _MyReader_Expecter {
-	 return _MyReader_Expecter{mock: _mock.mock}
+	return _MyReader_Expecter{mock: _mock.mock}
 }
 
 type _MyReader_Read_Call struct {

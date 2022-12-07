@@ -2,9 +2,9 @@
 
 package foo
 
-import foo "github.com/subtle-byte/mockigo/internal/fixtures/mockery/example_project/bar/foo"
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import foo "github.com/iesen/mockigo/internal/fixtures/mockery/example_project/bar/foo"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -22,16 +22,16 @@ type _PackageNameSameAsImport_Expecter struct {
 }
 
 func (_mock *PackageNameSameAsImport) EXPECT() _PackageNameSameAsImport_Expecter {
-	 return _PackageNameSameAsImport_Expecter{mock: _mock.mock}
+	return _PackageNameSameAsImport_Expecter{mock: _mock.mock}
 }
 
 type _PackageNameSameAsImport_NewClient_Call struct {
 	*mock.Call
 }
 
-func (_mock *PackageNameSameAsImport) NewClient() (foo.Client) {
+func (_mock *PackageNameSameAsImport) NewClient() foo.Client {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("NewClient", )
+	_results := _mock.mock.Called("NewClient")
 	var _r0 foo.Client
 	if _got := _results.Get(0); _got != nil {
 		_r0 = _got.(foo.Client)
@@ -40,7 +40,7 @@ func (_mock *PackageNameSameAsImport) NewClient() (foo.Client) {
 }
 
 func (_expecter _PackageNameSameAsImport_Expecter) NewClient() _PackageNameSameAsImport_NewClient_Call {
-	return _PackageNameSameAsImport_NewClient_Call{Call: _expecter.mock.ExpectCall("NewClient", )}
+	return _PackageNameSameAsImport_NewClient_Call{Call: _expecter.mock.ExpectCall("NewClient")}
 }
 
 func (_call _PackageNameSameAsImport_NewClient_Call) Return(_r0 foo.Client) _PackageNameSameAsImport_NewClient_Call {
@@ -48,7 +48,7 @@ func (_call _PackageNameSameAsImport_NewClient_Call) Return(_r0 foo.Client) _Pac
 	return _call
 }
 
-func (_call _PackageNameSameAsImport_NewClient_Call) RunReturn(f func() (foo.Client)) _PackageNameSameAsImport_NewClient_Call {
+func (_call _PackageNameSameAsImport_NewClient_Call) RunReturn(f func() foo.Client) _PackageNameSameAsImport_NewClient_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

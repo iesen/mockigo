@@ -1,7 +1,7 @@
 package mockery
 
 import (
-	"github.com/subtle-byte/mockigo/internal/fixtures/mockery/mockery"
+	"github.com/iesen/mockigo/internal/fixtures/mockery/mockery"
 )
 
 type C int

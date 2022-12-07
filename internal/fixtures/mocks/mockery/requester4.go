@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,20 +21,20 @@ type _Requester4_Expecter struct {
 }
 
 func (_mock *Requester4) EXPECT() _Requester4_Expecter {
-	 return _Requester4_Expecter{mock: _mock.mock}
+	return _Requester4_Expecter{mock: _mock.mock}
 }
 
 type _Requester4_Get_Call struct {
 	*mock.Call
 }
 
-func (_mock *Requester4) Get() () {
+func (_mock *Requester4) Get() {
 	_mock.mock.T.Helper()
-	_mock.mock.Called("Get", )
+	_mock.mock.Called("Get")
 }
 
 func (_expecter _Requester4_Expecter) Get() _Requester4_Get_Call {
-	return _Requester4_Get_Call{Call: _expecter.mock.ExpectCall("Get", )}
+	return _Requester4_Get_Call{Call: _expecter.mock.ExpectCall("Get")}
 }
 
 func (_call _Requester4_Get_Call) Return() _Requester4_Get_Call {
@@ -42,7 +42,7 @@ func (_call _Requester4_Get_Call) Return() _Requester4_Get_Call {
 	return _call
 }
 
-func (_call _Requester4_Get_Call) RunReturn(f func() ()) _Requester4_Get_Call {
+func (_call _Requester4_Get_Call) RunReturn(f func()) _Requester4_Get_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

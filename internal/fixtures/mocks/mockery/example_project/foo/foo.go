@@ -2,9 +2,9 @@
 
 package foo
 
-import foo "github.com/subtle-byte/mockigo/internal/fixtures/mockery/example_project/foo"
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import foo "github.com/iesen/mockigo/internal/fixtures/mockery/example_project/foo"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -22,22 +22,22 @@ type _Foo_Expecter struct {
 }
 
 func (_mock *Foo) EXPECT() _Foo_Expecter {
-	 return _Foo_Expecter{mock: _mock.mock}
+	return _Foo_Expecter{mock: _mock.mock}
 }
 
 type _Foo_DoFoo_Call struct {
 	*mock.Call
 }
 
-func (_mock *Foo) DoFoo() (string) {
+func (_mock *Foo) DoFoo() string {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("DoFoo", )
+	_results := _mock.mock.Called("DoFoo")
 	_r0 := _results.Get(0).(string)
 	return _r0
 }
 
 func (_expecter _Foo_Expecter) DoFoo() _Foo_DoFoo_Call {
-	return _Foo_DoFoo_Call{Call: _expecter.mock.ExpectCall("DoFoo", )}
+	return _Foo_DoFoo_Call{Call: _expecter.mock.ExpectCall("DoFoo")}
 }
 
 func (_call _Foo_DoFoo_Call) Return(_r0 string) _Foo_DoFoo_Call {
@@ -45,7 +45,7 @@ func (_call _Foo_DoFoo_Call) Return(_r0 string) _Foo_DoFoo_Call {
 	return _call
 }
 
-func (_call _Foo_DoFoo_Call) RunReturn(f func() (string)) _Foo_DoFoo_Call {
+func (_call _Foo_DoFoo_Call) RunReturn(f func() string) _Foo_DoFoo_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }
@@ -56,7 +56,7 @@ type _Foo_GetBaz_Call struct {
 
 func (_mock *Foo) GetBaz() (*foo.Baz, error) {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("GetBaz", )
+	_results := _mock.mock.Called("GetBaz")
 	var _r0 *foo.Baz
 	if _got := _results.Get(0); _got != nil {
 		_r0 = _got.(*foo.Baz)
@@ -66,7 +66,7 @@ func (_mock *Foo) GetBaz() (*foo.Baz, error) {
 }
 
 func (_expecter _Foo_Expecter) GetBaz() _Foo_GetBaz_Call {
-	return _Foo_GetBaz_Call{Call: _expecter.mock.ExpectCall("GetBaz", )}
+	return _Foo_GetBaz_Call{Call: _expecter.mock.ExpectCall("GetBaz")}
 }
 
 func (_call _Foo_GetBaz_Call) Return(_r0 *foo.Baz, _r1 error) _Foo_GetBaz_Call {

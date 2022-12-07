@@ -2,8 +2,8 @@
 
 package fixtures
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,22 +21,22 @@ type _GenericComparable_Expecter[T comparable] struct {
 }
 
 func (_mock *GenericComparable[T]) EXPECT() _GenericComparable_Expecter[T] {
-	 return _GenericComparable_Expecter[T]{mock: _mock.mock}
+	return _GenericComparable_Expecter[T]{mock: _mock.mock}
 }
 
 type _GenericComparable_Execute_Call[T comparable] struct {
 	*mock.Call
 }
 
-func (_mock *GenericComparable[T]) Execute() (T) {
+func (_mock *GenericComparable[T]) Execute() T {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("Execute", )
+	_results := _mock.mock.Called("Execute")
 	_r0 := _results.Get(0).(T)
 	return _r0
 }
 
 func (_expecter _GenericComparable_Expecter[T]) Execute() _GenericComparable_Execute_Call[T] {
-	return _GenericComparable_Execute_Call[T]{Call: _expecter.mock.ExpectCall("Execute", )}
+	return _GenericComparable_Execute_Call[T]{Call: _expecter.mock.ExpectCall("Execute")}
 }
 
 func (_call _GenericComparable_Execute_Call[T]) Return(_r0 T) _GenericComparable_Execute_Call[T] {
@@ -44,7 +44,7 @@ func (_call _GenericComparable_Execute_Call[T]) Return(_r0 T) _GenericComparable
 	return _call
 }
 
-func (_call _GenericComparable_Execute_Call[T]) RunReturn(f func() (T)) _GenericComparable_Execute_Call[T] {
+func (_call _GenericComparable_Execute_Call[T]) RunReturn(f func() T) _GenericComparable_Execute_Call[T] {
 	_call.Call.RunReturn(f)
 	return _call
 }

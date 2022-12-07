@@ -2,9 +2,9 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
-import mockery "github.com/subtle-byte/mockigo/internal/fixtures/mockery"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
+import mockery "github.com/iesen/mockigo/internal/fixtures/mockery"
 
 var _ = match.Any[int]
 
@@ -22,7 +22,7 @@ type _A_Expecter struct {
 }
 
 func (_mock *A) EXPECT() _A_Expecter {
-	 return _A_Expecter{mock: _mock.mock}
+	return _A_Expecter{mock: _mock.mock}
 }
 
 type _A_Call_Call struct {
@@ -31,14 +31,14 @@ type _A_Call_Call struct {
 
 func (_mock *A) Call() (mockery.B, error) {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("Call", )
+	_results := _mock.mock.Called("Call")
 	_r0 := _results.Get(0).(mockery.B)
 	_r1 := _results.Error(1)
 	return _r0, _r1
 }
 
 func (_expecter _A_Expecter) Call() _A_Call_Call {
-	return _A_Call_Call{Call: _expecter.mock.ExpectCall("Call", )}
+	return _A_Call_Call{Call: _expecter.mock.ExpectCall("Call")}
 }
 
 func (_call _A_Call_Call) Return(_r0 mockery.B, _r1 error) _A_Call_Call {

@@ -2,9 +2,9 @@
 
 package fixtures
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
-import someinterface "github.com/subtle-byte/mockigo/internal/fixtures/our/some-interface"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
+import someinterface "github.com/iesen/mockigo/internal/fixtures/our/some-interface"
 
 var _ = match.Any[int]
 
@@ -22,22 +22,22 @@ type _GenericFunc_Expecter[Y someinterface.SomeInterface] struct {
 }
 
 func (_mock *GenericFunc[Y]) EXPECT() _GenericFunc_Expecter[Y] {
-	 return _GenericFunc_Expecter[Y]{mock: _mock.mock}
+	return _GenericFunc_Expecter[Y]{mock: _mock.mock}
 }
 
 type _GenericFunc_Execute_Call[Y someinterface.SomeInterface] struct {
 	*mock.Call
 }
 
-func (_mock *GenericFunc[Y]) Execute() (Y) {
+func (_mock *GenericFunc[Y]) Execute() Y {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("Execute", )
+	_results := _mock.mock.Called("Execute")
 	_r0 := _results.Get(0).(Y)
 	return _r0
 }
 
 func (_expecter _GenericFunc_Expecter[Y]) Execute() _GenericFunc_Execute_Call[Y] {
-	return _GenericFunc_Execute_Call[Y]{Call: _expecter.mock.ExpectCall("Execute", )}
+	return _GenericFunc_Execute_Call[Y]{Call: _expecter.mock.ExpectCall("Execute")}
 }
 
 func (_call _GenericFunc_Execute_Call[Y]) Return(_r0 Y) _GenericFunc_Execute_Call[Y] {
@@ -45,7 +45,7 @@ func (_call _GenericFunc_Execute_Call[Y]) Return(_r0 Y) _GenericFunc_Execute_Cal
 	return _call
 }
 
-func (_call _GenericFunc_Execute_Call[Y]) RunReturn(f func() (Y)) _GenericFunc_Execute_Call[Y] {
+func (_call _GenericFunc_Execute_Call[Y]) RunReturn(f func() Y) _GenericFunc_Execute_Call[Y] {
 	_call.Call.RunReturn(f)
 	return _call
 }

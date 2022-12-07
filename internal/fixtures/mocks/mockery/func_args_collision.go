@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,14 +21,14 @@ type _FuncArgsCollision_Expecter struct {
 }
 
 func (_mock *FuncArgsCollision) EXPECT() _FuncArgsCollision_Expecter {
-	 return _FuncArgsCollision_Expecter{mock: _mock.mock}
+	return _FuncArgsCollision_Expecter{mock: _mock.mock}
 }
 
 type _FuncArgsCollision_Foo_Call struct {
 	*mock.Call
 }
 
-func (_mock *FuncArgsCollision) Foo(ret interface{}) (error) {
+func (_mock *FuncArgsCollision) Foo(ret interface{}) error {
 	_mock.mock.T.Helper()
 	_results := _mock.mock.Called("Foo", ret)
 	_r0 := _results.Error(0)
@@ -44,7 +44,7 @@ func (_call _FuncArgsCollision_Foo_Call) Return(_r0 error) _FuncArgsCollision_Fo
 	return _call
 }
 
-func (_call _FuncArgsCollision_Foo_Call) RunReturn(f func(ret interface{}) (error)) _FuncArgsCollision_Foo_Call {
+func (_call _FuncArgsCollision_Foo_Call) RunReturn(f func(ret interface{}) error) _FuncArgsCollision_Foo_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

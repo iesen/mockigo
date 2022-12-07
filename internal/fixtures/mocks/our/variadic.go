@@ -2,8 +2,8 @@
 
 package fixtures
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,14 +21,14 @@ type _Variadic_Expecter struct {
 }
 
 func (_mock *Variadic) EXPECT() _Variadic_Expecter {
-	 return _Variadic_Expecter{mock: _mock.mock}
+	return _Variadic_Expecter{mock: _mock.mock}
 }
 
 type _Variadic_SomeMethod_Call struct {
 	*mock.Call
 }
 
-func (_mock *Variadic) SomeMethod(a int, b ...string) (bool) {
+func (_mock *Variadic) SomeMethod(a int, b ...string) bool {
 	_mock.mock.T.Helper()
 	_args := []interface{}{a}
 	for _, _variadic := range b {
@@ -49,7 +49,7 @@ func (_call _Variadic_SomeMethod_Call) Return(_r0 bool) _Variadic_SomeMethod_Cal
 	return _call
 }
 
-func (_call _Variadic_SomeMethod_Call) RunReturn(f func(a int, b ...string) (bool)) _Variadic_SomeMethod_Call {
+func (_call _Variadic_SomeMethod_Call) RunReturn(f func(a int, b ...string) bool) _Variadic_SomeMethod_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

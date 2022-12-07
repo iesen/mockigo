@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,14 +21,14 @@ type _Blank_Expecter struct {
 }
 
 func (_mock *Blank) EXPECT() _Blank_Expecter {
-	 return _Blank_Expecter{mock: _mock.mock}
+	return _Blank_Expecter{mock: _mock.mock}
 }
 
 type _Blank_Create_Call struct {
 	*mock.Call
 }
 
-func (_mock *Blank) Create(x interface{}) (error) {
+func (_mock *Blank) Create(x interface{}) error {
 	_mock.mock.T.Helper()
 	_results := _mock.mock.Called("Create", x)
 	_r0 := _results.Error(0)
@@ -44,7 +44,7 @@ func (_call _Blank_Create_Call) Return(_r0 error) _Blank_Create_Call {
 	return _call
 }
 
-func (_call _Blank_Create_Call) RunReturn(f func(x interface{}) (error)) _Blank_Create_Call {
+func (_call _Blank_Create_Call) RunReturn(f func(x interface{}) error) _Blank_Create_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

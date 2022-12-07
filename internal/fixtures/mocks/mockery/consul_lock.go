@@ -2,8 +2,8 @@
 
 package mockery
 
-import match "github.com/subtle-byte/mockigo/match"
-import mock "github.com/subtle-byte/mockigo/mock"
+import match "github.com/iesen/mockigo/match"
+import mock "github.com/iesen/mockigo/mock"
 
 var _ = match.Any[int]
 
@@ -21,7 +21,7 @@ type _ConsulLock_Expecter struct {
 }
 
 func (_mock *ConsulLock) EXPECT() _ConsulLock_Expecter {
-	 return _ConsulLock_Expecter{mock: _mock.mock}
+	return _ConsulLock_Expecter{mock: _mock.mock}
 }
 
 type _ConsulLock_Lock_Call struct {
@@ -57,15 +57,15 @@ type _ConsulLock_Unlock_Call struct {
 	*mock.Call
 }
 
-func (_mock *ConsulLock) Unlock() (error) {
+func (_mock *ConsulLock) Unlock() error {
 	_mock.mock.T.Helper()
-	_results := _mock.mock.Called("Unlock", )
+	_results := _mock.mock.Called("Unlock")
 	_r0 := _results.Error(0)
 	return _r0
 }
 
 func (_expecter _ConsulLock_Expecter) Unlock() _ConsulLock_Unlock_Call {
-	return _ConsulLock_Unlock_Call{Call: _expecter.mock.ExpectCall("Unlock", )}
+	return _ConsulLock_Unlock_Call{Call: _expecter.mock.ExpectCall("Unlock")}
 }
 
 func (_call _ConsulLock_Unlock_Call) Return(_r0 error) _ConsulLock_Unlock_Call {
@@ -73,7 +73,7 @@ func (_call _ConsulLock_Unlock_Call) Return(_r0 error) _ConsulLock_Unlock_Call {
 	return _call
 }
 
-func (_call _ConsulLock_Unlock_Call) RunReturn(f func() (error)) _ConsulLock_Unlock_Call {
+func (_call _ConsulLock_Unlock_Call) RunReturn(f func() error) _ConsulLock_Unlock_Call {
 	_call.Call.RunReturn(f)
 	return _call
 }

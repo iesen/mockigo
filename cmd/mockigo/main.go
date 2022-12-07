@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/subtle-byte/mockigo/internal/dir_walker"
-	"github.com/subtle-byte/mockigo/internal/dir_walker/glob"
-	"github.com/subtle-byte/mockigo/internal/generator"
+	"github.com/iesen/mockigo/internal/dir_walker"
+	"github.com/iesen/mockigo/internal/dir_walker/glob"
+	"github.com/iesen/mockigo/internal/generator"
 	"gopkg.in/yaml.v2"
 )
 
